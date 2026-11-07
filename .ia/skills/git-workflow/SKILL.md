@@ -69,6 +69,8 @@ Agents may prepare steps 1 to 3. **Tagging (step 5) is the maintainer's call.**
 5. Tag the merge commit on `main`: `git tag -a vX.Y.Z -m "vX.Y.Z" && git push origin vX.Y.Z`.
    The `release` workflow then checks the tag is on `main` and in the CHANGELOG, builds the
    Docker image, pushes `ghcr.io/<owner>/<repo>:X.Y.Z` and creates the GitHub Release.
+   Without a terminal: Releases → Draft a new release → new tag `vX.Y.Z` on `main` → Publish;
+   the workflow then fills in the notes from the CHANGELOG.
 6. Back-merge: open a PR `main` → `dev`, **merge commit**. Delete `release/vX.Y.Z`.
 7. Deployment: update the image tag in the infra repository (manual for now, see
    `docs/adr/0005-deployment.md`).
