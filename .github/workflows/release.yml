@@ -34,6 +34,7 @@ jobs:
             $0 ~ "^## \\[" v "\\]" {on=1; next}
             on && /^## \[/ {exit}
             on && /^\[[^]]+\]: / {exit}
+            on && /^<!--/ {exit}
             on {print}' CHANGELOG.md > notes.md
           cat notes.md
 
