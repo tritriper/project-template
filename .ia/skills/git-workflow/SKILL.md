@@ -16,7 +16,8 @@ description: Branching model, Conventional Commits, pull requests and the releas
 | `release/vX.Y.Z`    | `dev`  | `main`      | PR, **merge commit**        |
 | `main` (back-merge) | —      | `dev`       | PR, **merge commit**        |
 
-- Nobody pushes to `main` or `dev` directly; both are protected.
+- Agents never push to `main` or `dev`. `main` is protected (PR, checks, no force-push);
+  `dev` allows direct and force pushes by the maintainer only.
 - `<slug>` is short kebab-case English: `feat/csv-export`, `fix/login-timeout`.
 - Keep branches short-lived; rebase on `dev` (or merge `dev` in) before asking for review.
 - An urgent production fix is a `fix/…` on `dev`, then a patch release.
