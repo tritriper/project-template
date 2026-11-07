@@ -6,6 +6,10 @@ One change per line, written for users. Sections: Added, Changed, Deprecated, Re
 
 ## [Unreleased]
 
+### Fixed
+
+- Release workflow no longer fails when the release was already published from the GitHub UI.
+
 ## [1.0.0] - 2026-11-07
 
 ### Added

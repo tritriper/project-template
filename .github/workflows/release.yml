@@ -71,9 +71,15 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+      # Updates the notes when the release was already published from the GitHub UI.
       - name: GitHub Release
         env: { GH_TOKEN: '${{ github.token }}' }
-        run: gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --notes-file notes.md --verify-tag
+        run: |
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release edit "$GITHUB_REF_NAME" --notes-file notes.md
+          else
+            gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --notes-file notes.md --verify-tag
+          fi
 
       - name: Next step
         run: |
